@@ -1,4 +1,5 @@
 @import '../../../scss/variables.scss';
+@import '../../../scss/viewport.scss';
 .search {
     label {
         font-size: 1.2rem;
@@ -9,6 +10,9 @@
         justify-content: left;
         flex-wrap: wrap;
         margin-top: 2rem;
+        @include mobile {
+            flex-direction: column;
+        }
         .search__info {
             width: 30%;
             margin: 0 1rem 1rem 0;
@@ -16,6 +20,10 @@
             height: 30rem;
             position: relative;
             cursor: pointer;
+            @include mobile {
+                width: 100%;
+                flex: 0 0 100%;
+            }
             &:hover {
                 .search__desc {
                     opacity: 1;
