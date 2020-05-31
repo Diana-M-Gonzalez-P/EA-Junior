@@ -1,0 +1,42 @@
+<div class="container main-container search">
+    <form class="row" [formGroup]="searchForm" #form="ngForm">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Buscar:</label>
+                <input class="form-control" type="text" name="buscar" placeholder="Busca tú serie" formControlName="search" formControlName="search" [(ngModel)]="searchItem" (keyup)="validateForm( form ); search()" [ngClass]="{ 'is-invalid': formS.search.errors }">
+
+                <div *ngIf=" formS.search.errors" class="invalid-feedback search__error">
+                    <p *ngIf="formS.search.errors.required">Este campo es requerido</p>
+                    <p *ngIf="formS.search.errors.pattern">Este campo no acepta el @ y el #</p>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="message-error" *ngIf="error">
+        <p>
+            {{this.mensError}}
+        </p>
+    </div>
+
+    <div class=" search__items " animated fadeIn fast infiniteScroll [infiniteScrollDistance]="0.5 " (scrolled)="onScroll() ">
+        <div class="search__info card " *ngFor="let item of miniCard " [routerLink]="[ '/film',item.id, 'search',search] ">
+            <div class=" search__img card-img-top " [ngStyle]="{ 'background-image': 'url(' + (item | nullImage) + ')'} "></div>
+            <div class="card-body search__title ">
+                <h2 class="card-text ">{{item.name}}</h2>
+            </div>
+            <div class="search__desc card ">
+                <div class="card-body ">
+                    <h3 class="card-title ">Popularidad</h3>
+                    <p class="card-text ">{{item.popularity}}</p>
+                    <h4 class="card-subtitle ">Actores</h4>
+                    <div class="search__actors ">
+                        <div *ngFor="let actors of item.cast | slice:0:3 ">
+                            <p class="card-text ">{{actors.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

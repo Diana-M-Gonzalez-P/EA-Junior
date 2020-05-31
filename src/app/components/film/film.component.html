@@ -1,0 +1,45 @@
+<div class="container main-container animated fadeIn fast film" *ngIf="film">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card film__cover">
+                <img [src]="film | nullImage" class="img-thumbnail img-fluid">
+                <div class="card-body film__title">
+                    <h2 class="card-text">{{film.name}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="film__return">
+                <button type="button" class="btn btn-info" [routerLink]="['/'+return, search]">Regresar</button>
+            </div>
+            <div class="film__season">
+                <h2>Temporadas</h2>
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group mr-2 film__toolbar" role="group">
+                        <button type="button" class="btn btn-secondary" *ngFor="let season of film.seasons | slice:1" (click)="getIdSeason(season.season_number)">{{season.season_number}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="film__sason-text">
+                <div class="accordion" id="accordeon">
+                    <div class="card" *ngFor="let item of episodes">
+                        <div class="card-header" [id]="'acoordeon' + item.episode_number">
+                            <p class="film__number">{{item.episode_number}}</p>
+                            <h2 class="mb-0 film__sason-title">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + item.episode_number" aria-expanded="true" aria-controls="collapseOne">
+                                {{item.name}}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div [id]="'collapse' + item.episode_number" class="collapse film__sason-desc" [attr.aria-labelledby]="'#acoordeon' + item.episode_number" data-parent="#accordeon">
+                            <div class="card-body">
+                                {{item.overview}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

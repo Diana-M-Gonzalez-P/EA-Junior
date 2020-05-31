@@ -1,0 +1,46 @@
+@import '../../../scss/variables.scss';
+.film {
+    &__season {
+        margin: 2rem 0;
+        .film__toolbar {
+            flex-wrap: wrap;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        button {
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+    &__sason-text {
+        .accordion {
+            .card {
+                .card-header {
+                    background-color: $blue;
+                    display: flex;
+                    align-items: center;
+                    .film__number,
+                    .film__sason-title button {
+                        font-size: 1.3rem;
+                        font-weight: bold;
+                        color: $orange;
+                    }
+                    .film__sason-title {
+                        width: 100%;
+                        button {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+                .film__sason-desc {
+                    .card-body {
+                        font-size: 1rem;
+                        line-height: 1.5;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<div class="gallery">
+    <h1>{{title}}</h1>
+    <div class="gallery__item">
+        <div class="gallery__info card" *ngFor="let item of films" [routerLink]="['/film', item.id,'home']">
+            <div class=" gallery__img card-img-top" [ngStyle]="{'background-image': 'url(' + (item | nullImage) + ')'}"></div>
+            <div class="card-body gallery__title">
+                <h2 class="card-text">{{item.name}}</h2>
+            </div>
+            <div class="gallery__desc card">
+                <div class="card-body">
+                    <h3 class="card-title">Popularidad</h3>
+                    <p class="card-text">{{item.popularity}}</p>
+                    <h4 class="card-subtitle">Actores</h4>
+                    <div class="gallery__actors">
+                        <div *ngFor="let actors of item.cast | slice:0:3">
+                            <p class="card-text">{{actors.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

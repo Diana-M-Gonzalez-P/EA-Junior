@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'reset-css';
+@import 'scss/animation.scss';
+@import 'scss/viewport.scss';
+@import 'scss/variables.scss';
+* {
+    font-family: 'Muli', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html {
+    font-size: 16px;
+    body {
+        .main-container {
+            margin-top: 2rem;
+            margin-bottom: 5rem;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 2.1rem;
+        }
+        h3 {
+            font-size: 2rem;
+            color: $orange;
+        }
+        h4 {
+            font-size: 1.5rem;
+            color: $orange;
+        }
+        p {
+            font-size: 1rem;
+        }
+        .message-error {
+            background: rgba($red, 0.7);
+            width: 60%;
+            height: 3rem;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            @include mobile {
+                width: 100%;
+            }
+            p {
+                font-size: 1.2rem;
+                color: $white;
+                margin: 0;
+            }
+        }
+    }
+}
